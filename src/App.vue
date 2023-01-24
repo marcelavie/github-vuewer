@@ -38,7 +38,7 @@
     </v-app-bar>
 
     <v-main>
-      <HelloWorld/>
+
     </v-main>
   </v-app>
 </template>
@@ -50,7 +50,7 @@ export default {
   name: 'App',
 
   components: {
-    HelloWorld,
+    // HelloWorld,
   },
 
   data: () => ({
