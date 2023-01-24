@@ -1,4 +1,6 @@
 name: publica no ghpages
+permissions:
+  contents: write
 on:
   push:
     branches:
