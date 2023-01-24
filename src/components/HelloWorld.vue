@@ -112,7 +112,7 @@
       ],
       importantLinks: [
         {
-          text: 'Documentation',
+          text: 'Como é bom ser vida louca',
           href: 'https://vuetifyjs.com',
         },
         {
