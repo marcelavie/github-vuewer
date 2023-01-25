@@ -1,7 +1,10 @@
 <template>
     <div>
       <v-row class="text-center">
-        <v-col cols="6">
+        <v-col cols="2" v-if="user">
+        <v-avatar><img :src='avatar'></v-avatar>
+      </v-col>
+        <v-col cols="5">
           <v-autocomplete
           v-model="user"
           label="Encontre seu usuário"
@@ -11,7 +14,7 @@
           item-text="login"
         />
         </v-col>
-        <v-col cols="6">
+        <v-col cols="5">
           <v-select
             v-model="repo"
             :items="repolist"
@@ -40,12 +43,14 @@
         repolist: [],
         userloading: false,
         repoloading: false,
+        avatar: null
       }),
       methods: {
         procuraUsuariosGithub: debouncerdecorator(async function () { // atenção: não use ()=>{} aqui. vai quebrar o decorator
           this.userloading = true
           const data = await api.search_users(this.usersearch)
           this.userlist = data.items
+          this.avatar = this.userlist.map(user => user.avatar_url)
           this.userloading = false
         }, 500),
         async listaRepositorios(){
