@@ -35,5 +35,10 @@ export const api = {
         const url = `https://api.github.com/repos/${owner}/${reponame}/contents/`;
         const response = await fetch(url);
         return await response.json();
-      },
+    },
+    async listaPasta(owner, repo, path) {
+        const url = `https://api.github.com/repos/${owner}/${repo}/contents/${path}`;
+        const response = await fetch(url);
+        return await response.json();
+    },
 }
