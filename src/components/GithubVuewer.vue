@@ -2,6 +2,7 @@
     <v-container>
       <GithubRepo @reposelected="onRepoSelected"/>
       <GithubIssues :repo="repo"/>
+      <GithubContent :repo="repo"/>
     </v-container>
   </template>
     
