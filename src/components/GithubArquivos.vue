@@ -2,6 +2,11 @@
   <v-container>
    <v-row>
      <v-col cols="12">
+      <v-banner
+					v-if="actualPath"
+				>
+					📂 {{actualPath}}
+			</v-banner>
       <span v-for="path in openFolders" :key="path"><v-btn @click="listaPasta(path)"> / {{ path }} </v-btn></span>
        <v-simple-table>
          <template v-slot:default>
@@ -51,6 +56,7 @@ export default {
     directoryContent: true,
     previousPath: null,
 		openFolders: [],
+    actualPath: null,
 	}),
 	methods: {
 		async listaArquivos(){
@@ -61,12 +67,15 @@ export default {
 			this.loading = false
 		},
 		async listaPasta(path) {
+      let gitPath = []
       this.loading = true;
       const contents = await api.listaPasta(
         this.repo.owner.login,
         this.repo.name,
         path
       );
+      gitPath.push(this.repo.owner.login, this.repo.name, path)
+      this.actualPath = gitPath.join('/')
       let newPreviousPathList = path.split("/");
       newPreviousPathList.pop();
       const newPreviousPath = newPreviousPathList.join("/");
