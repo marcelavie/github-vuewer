@@ -1,3 +1,5 @@
+
+
 <template>
   <v-app>
     <v-app-bar
@@ -38,21 +40,18 @@
     </v-app-bar>
 
     <v-main>
-
+      <GithubVuewer/>
     </v-main>
   </v-app>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld';
-
+import GithubVuewer from './components/GithubVuewer';
 export default {
   name: 'App',
-
   components: {
-    // HelloWorld,
+    GithubVuewer,
   },
-
   data: () => ({
     //
   }),
