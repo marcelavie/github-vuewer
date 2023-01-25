@@ -30,5 +30,20 @@ export const api = {
         const url = `https://api.github.com/repos/${owner}/${name}/issues?page=${page}`
         const response = await fetch(url)
         return await response.json()
-    }
+    },
+    async MostraEmArvore (owner, repo, tree_sha) {
+        const url = `https://api.github.com/repos/${owner}/${repo}/git/trees/${tree_sha}`
+        const response = await fetch(url)
+        return await response.json()
+    },
+    async PegaCaminho (owner, reponame, path) {
+        const url = `https://api.github.com/repos/${owner}/${reponame}/contents/${path}`;
+        const response = await fetch(url);
+        return await response.json();
+    },
+    async PegaArquivos (owner, reponame) {
+        const url = `https://api.github.com/repos/${owner}/${reponame}/contents/`;
+        const response = await fetch(url);
+        return await response.json();
+      },
 }
